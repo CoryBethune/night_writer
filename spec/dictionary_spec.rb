@@ -13,7 +13,7 @@ RSpec.describe Dictionary do
 
   it 'has attributes' do
     expect(@dictionary.dict.class).to eq(Hash)
-    expect(@dictionary.dict.length).to eq 26
+    expect(@dictionary.dict.length).to eq 39
   end
 
 
