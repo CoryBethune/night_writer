@@ -12,8 +12,8 @@ braille_txt = File.open(ARGV[1], 'w')
 # binding.pry
 braille_txt.write(incoming_text)
 
+binding.pry
 braille_txt.close
 
-# binding.pry
 
 puts "Created #{ARGV[1]} containing #{incoming_text.length} characters."
