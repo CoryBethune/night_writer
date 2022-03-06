@@ -80,7 +80,16 @@ class Dictionary
                  ["..", "..", "00"]=>"-"}
   end
 
+  def braille_array(string)
+    
+  end
+
+
   def print_braille(array)
 
   end
+
+
+
+
 end

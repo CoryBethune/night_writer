@@ -20,6 +20,11 @@ RSpec.describe Dictionary do
     expect(@dictionary.braille.class).to eq(Hash)
   end
 
+  it 'can read a string and convert it into an array of unformatted braille' do
+    expect(@dictionary.braille_array(test).class).to eq Array
+    expect(@dictionary.braille_array(test).first).to eq ["0.", "00", ".."]
+  end
+
   it 'can print braille' do
     test = @dictionary.dict["a"]
     expect(@dictionary.print_braille(test)).to eq ("0. .. ..")
