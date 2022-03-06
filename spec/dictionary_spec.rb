@@ -20,11 +20,9 @@ RSpec.describe Dictionary do
     expect(@dictionary.braille.class).to eq(Hash)
   end
 
-  # it 'can be inverted' do
-  #   expect(@dictionary.braille.class).to eq Hash
-  #   binding.pry
-  #   expect(@dictionary.braille.length).to eq 39
-  #   expect(@dictionary.braille.values.first).to eq "a"
-  # end
+  it 'can print braille' do
+    test = @dictionary.dict["a"]
+    expect(@dictionary.print_braille(test)).to eq ("0. .. ..")
+  end
 
 end

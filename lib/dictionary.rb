@@ -1,6 +1,9 @@
 require 'pry'
+require './lib/brailleable'
 
 class Dictionary
+  include Brailleable
+
   attr_reader :dict, :braille
 
   def initialize
@@ -77,4 +80,7 @@ class Dictionary
                  ["..", "..", "00"]=>"-"}
   end
 
+  def print_braille(array)
+
+  end
 end
