@@ -14,7 +14,13 @@ RSpec.describe Dictionary do
   it 'has attributes' do
     expect(@dictionary.dict.class).to eq(Hash)
     expect(@dictionary.dict.length).to eq 39
+    expect(@dictionary.dict.keys.first).to eq "a"
   end
 
+  it 'can be inverted' do
+    expect(@dictionary.braille.class).to eq Hash
+    expect(@dictionary.braille.length).to eq 39
+    expect(@dictionary.braille.values.first).to eq "a"
+  end
 
 end
