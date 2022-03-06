@@ -11,5 +11,9 @@ RSpec.describe Dictionary do
     expect(@dictionary).to be_a Dictionary
   end
 
+  it 'has attributes' do
+    expect(@dictionary.dict.class).to be_a Hash
+  end
+
 
 end
