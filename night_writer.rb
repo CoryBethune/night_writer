@@ -9,11 +9,11 @@ message_txt.close
 #need some kind of brail converter I think
 
 braille_txt = File.open(ARGV[1], 'w')
-
+# binding.pry
 braille_txt.write(incoming_text)
 
 braille_txt.close
 
 # binding.pry
 
-puts "Created 'braille.txt' containing #{incoming_text.length} characters."
+puts "Created #{ARGV[1]} containing #{incoming_text.length} characters."
