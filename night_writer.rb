@@ -8,13 +8,13 @@ message_txt = File.open(ARGV[0], 'r')
 incoming_text = message_txt.read.chomp
 message_txt.close
 
-# binding.pry
-unform_braille = dictionary.braille_array(incoming_text.downcase.split(""))
-
+unform_braille = dictionary.braille_output(incoming_text.downcase.split(""))
+binding.pry
 test = dictionary.dict[incoming_text]
 
 braille_txt = File.open(ARGV[1], 'w')
 braille_txt.write(test)
+binding.pry
 braille_txt.close
 
 
