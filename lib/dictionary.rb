@@ -1,6 +1,9 @@
 require 'pry'
+require './lib/brailleable'
 
 class Dictionary
+  include Brailleable
+
   attr_reader :dict, :braille
 
   def initialize
@@ -38,7 +41,8 @@ class Dictionary
              "?" => ["..", "0.", "00"],
              "*" => [".. ..", ".0 .0", "0. 0."],
              "'" => ["..", "..", "0."],
-             "-" => ["..", "..", "00"]
+             "-" => ["..", "..", "00"],
+             " " => ["..", "..", ".."]
            }
     @braille = {["0.", "..", ".."]=>"a",
                  ["0.", "0.", ".."]=>"b",
@@ -74,7 +78,51 @@ class Dictionary
                  ["..", "0.", "00"]=>"?",
                  [".. ..", ".0 .0", "0. 0."]=>"*",
                  ["..", "..", "0."]=>"'",
-                 ["..", "..", "00"]=>"-"}
+                 ["..", "..", "00"]=>"-",
+                 ["..", "..", ".."]=>" "}
   end
+
+  def braille_array(string) #turns a string into an array of unformmated braille arrays
+    unformatted_braille = Array.new
+    string.each do |elem|
+      unformatted_braille << @dict[elem]
+    end
+    unformatted_braille
+  end
+
+
+  def format_braille(arrays)
+    first_row = ""
+    second_row = ""
+    third_row = ""
+    braille = ""
+    x = 0 #control variable
+    until x > 2
+      if x == 0
+        arrays.each do |array|
+          first_row += array[x]
+        end
+        x += 1
+      elsif x == 1
+        arrays.each do |array|
+          second_row += array[x]
+        end
+        x += 1
+      elsif x == 2
+        arrays.each do |array|
+          third_row += array[x]
+        end
+        x += 1
+      end
+    end
+    braille = first_row + second_row + third_row
+    # p first_row
+    # p second_row
+    # p third_row
+    # binding.pry
+  end
+
+
+
 
 end

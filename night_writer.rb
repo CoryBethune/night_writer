@@ -8,7 +8,8 @@ message_txt = File.open(ARGV[0], 'r')
 incoming_text = message_txt.read.chomp
 message_txt.close
 
-#need some kind of brail converter I think
+# binding.pry
+unform_braille = dictionary.braille_array(incoming_text.downcase.split(""))
 
 test = dictionary.dict[incoming_text]
 
