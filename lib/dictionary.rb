@@ -91,8 +91,35 @@ class Dictionary
   end
 
 
-  def format_braille(array)
-    
+  def format_braille(arrays)
+    first_row = ""
+    second_row = ""
+    third_row = ""
+    braille = ""
+    x = 0 #control variable
+    until x > 2
+      if x == 0
+        arrays.each do |array|
+          first_row += array[x]
+        end
+        x += 1
+      elsif x == 1
+        arrays.each do |array|
+          second_row += array[x]
+        end
+        x += 1
+      elsif x == 2
+        arrays.each do |array|
+          third_row += array[x]
+        end
+        x += 1
+      end
+    end
+    braille = first_row + second_row + third_row
+    # p first_row
+    # p second_row
+    # p third_row
+    # binding.pry
   end
 
 

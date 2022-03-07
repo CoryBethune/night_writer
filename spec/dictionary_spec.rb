@@ -28,9 +28,10 @@ RSpec.describe Dictionary do
   end
 
   it 'can format braille' do
-    whatever = ["aBC"]
+    whatever = "abc"
     test = @dictionary.braille_array(whatever.split(""))
-    expect(@dictionary.format_braille(test)).to eq ("0.....0.0...00....")
+# binding.pry
+    expect(@dictionary.format_braille(test)).to eq ("0.0.00..0.........")
   end
 
 end
