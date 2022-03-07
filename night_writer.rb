@@ -9,7 +9,7 @@ incoming_text = message_txt.read.chomp
 message_txt.close
 
 #need some kind of brail converter I think
-
+binding.pry
 test = dictionary.dict[incoming_text]
 
 braille_txt = File.open(ARGV[1], 'w')
