@@ -82,10 +82,12 @@ class Dictionary
                  ["..", "..", ".."]=>" "}
   end
 
-  def braille_array(string)
-    unformatted_braille = Hash.new
+  def braille_array(string) #turns a string into an array of unformmated braille arrays 
+    unformatted_braille = Array.new
     string.each do |elem|
-
+      unformatted_braille << @dict[elem]
+    end
+    unformatted_braille
   end
 
 
