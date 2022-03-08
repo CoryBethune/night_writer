@@ -27,11 +27,15 @@ RSpec.describe Dictionary do
     expect(@dictionary.braille_array(test.split("")).length).to eq 5
   end
 
-  it 'can format braille' do
-    whatever = "abc"
+  it 'can format braille arrays to a string of braille' do
+    whatever = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     test = @dictionary.braille_array(whatever.split(""))
-# binding.pry
     expect(@dictionary.format_braille(test)).to eq ("0.0.00..0.........")
+  end
+
+  xit "takes braille string and prints in the proper 3 line format with no more than 40 characters on a line" do
+
+    expect()
   end
 
 end
