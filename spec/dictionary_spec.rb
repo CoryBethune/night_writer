@@ -56,4 +56,8 @@ RSpec.describe Dictionary do
     expect(test).to eq [["0.", "..", ".."]]
   end
 
+  it "takes in a 2d array and returns corresponding values as a string" do
+    test = @dictionary.english_output([["0.", "..", ".."]])
+    expect(test).to eq "a"
+  end
 end
