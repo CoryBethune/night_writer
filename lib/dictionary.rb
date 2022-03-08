@@ -158,9 +158,11 @@ class Dictionary
     return dict_array
   end
 
-  def english_output(array)
+  def english_output(string)
+    array = unstack_braille(string)
+    braille_2d = convert_to_braille_dict_format(array)
     english_text = ""
-    array.each do |array|
+    braille_2d.each do |array|
       @braille.each do |k, v|
         if array == k
           english_text += v
