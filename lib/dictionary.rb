@@ -158,4 +158,16 @@ class Dictionary
     return dict_array
   end
 
+  def english_output(array)
+    english_text = ""
+    array.each do |array|
+      @braille.each do |k, v|
+        if array == k
+          english_text += v
+        end
+      end
+    end
+    english_text
+  end
+
 end
