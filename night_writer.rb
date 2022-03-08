@@ -1,6 +1,5 @@
 require 'pry'
 require './lib/dictionary'
-require './lib/brailleable'
 
 dictionary = Dictionary.new
 
@@ -9,8 +8,6 @@ incoming_text = message_txt.read.chomp
 message_txt.close
 
 braille_text = dictionary.braille_output(incoming_text.downcase.split(""))
-# binding.pry
-# test = dictionary.dict[incoming_text]
 
 braille_txt = File.open(ARGV[1], 'w')
 braille_txt.write(braille_text)
