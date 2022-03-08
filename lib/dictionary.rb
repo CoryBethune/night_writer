@@ -143,4 +143,19 @@ class Dictionary
     return array_of_braille
   end
 
+  def convert_to_braille_dict_format(array)
+    dict_array = [] #return array
+    letter_array = [] #array of 3 elements of braille that correspond to the braill dictionary
+    b = 0 #control variable
+    (array.length / 6).times do
+      until b > 2
+        letter_array[b] = array.shift(2).join
+        b += 1
+      end
+      dict_array << letter_array
+      b = 0
+    end
+    return dict_array
+  end
+
 end

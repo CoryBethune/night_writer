@@ -46,6 +46,14 @@ RSpec.describe Dictionary do
     expect(whatever.length).to eq 8
     expect(@dictionary.unstack_braille(whatever).length).to eq 6
     expect(@dictionary.unstack_braille(whatever).class).to be Array
+    # binding.pry
+  end
+
+  it 'gets an array of individual character and creates a 2d array of arrays containing 3 elements of braille' do
+    whatever = "0.\n..\n.."
+    yay = @dictionary.unstack_braille(whatever)
+    test = @dictionary.convert_to_braille_dict_format(yay)
+    expect(test).to eq [["0.", "..", ".."]]
   end
 
 end
