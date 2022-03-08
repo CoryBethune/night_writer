@@ -124,7 +124,18 @@ class Dictionary
   def braille_output(string) #turns the one big string variable from above into three lines of braille not to exceed 40 characters
     unform_braille = braille_array(string)
     formatted_braille = format_braille(unform_braille)
-
+    c = formatted_braille[0].length #limit variable
+    x = 0 #control variable
+    braille = "" # variable to hold final version of the braille txt file
+    until x > (c - 1)
+      formatted_braille.each do |array|
+        braille += array[x] + "\n"
+        # binding.pry
+      end
+      x += 1
+      # binding.pry
+    end
+    braille
   end
 
 
