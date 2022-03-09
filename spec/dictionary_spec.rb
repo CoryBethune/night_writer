@@ -28,9 +28,10 @@ RSpec.describe Dictionary do
   end
 
   it 'can format braille arrays to a string of braille' do
-    whatever = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    whatever = "abc"
     test = @dictionary.braille_array(whatever.split(""))
-    expect(@dictionary.format_braille(test)).to eq ("0.0.00..0.........")
+    a = @dictionary.format_braille(test)
+    expect(a).to eq ([["0.0.00"], ["..0..."], ["......"]])
   end
 
   xit "takes braille string and prints in the proper 3 line format with no more than 40 characters on a line" do
@@ -38,4 +39,25 @@ RSpec.describe Dictionary do
     expect()
   end
 
+  #test below this line are for the braille to english methods
+
+  it 'gets a string of braille and turns it into an array of individual chars' do
+    whatever = "0.\n..\n.."
+    expect(whatever.length).to eq 8
+    expect(@dictionary.unstack_braille(whatever).length).to eq 6
+    expect(@dictionary.unstack_braille(whatever).class).to be Array
+    # binding.pry
+  end
+
+  it 'gets an array of individual character and creates a 2d array of arrays containing 3 elements of braille' do
+    whatever = "0.\n..\n.."
+    yay = @dictionary.unstack_braille(whatever)
+    test = @dictionary.convert_to_braille_dict_format(yay)
+    expect(test).to eq [["0.", "..", ".."]]
+  end
+
+  it "takes in a 2d array and returns corresponding values as a string" do
+    test = @dictionary.english_output("0.\n..\n..")
+    expect(test).to eq "a"
+  end
 end

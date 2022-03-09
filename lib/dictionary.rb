@@ -41,6 +41,42 @@ class Dictionary
              "-" => ["..", "..", "00"],
              " " => ["..", "..", ".."]
            }
+    @braille = {["0.", "..", ".."]=>"a",
+                 ["0.", "0.", ".."]=>"b",
+                 ["00", "..", ".."]=>"c",
+                 ["00", ".0", ".."]=>"d",
+                 ["0.", ".0", ".."]=>"e",
+                 ["00", "0.", ".."]=>"f",
+                 ["00", "00", ".."]=>"g",
+                 ["0.", "00", ".."]=>"h",
+                 [".0", "0.", ".."]=>"i",
+                 [".0", "00", ".."]=>"j",
+                 ["0.", "..", "0."]=>"k",
+                 ["0.", "0.", "0."]=>"l",
+                 ["00", "..", "0."]=>"m",
+                 ["00", ".0", "0."]=>"n",
+                 ["0.", ".0", "0."]=>"o",
+                 ["00", "0.", "0."]=>"p",
+                 ["00", "00", "0."]=>"q",
+                 ["0.", "00", "0."]=>"r",
+                 [".0", "0.", "0."]=>"s",
+                 [".0", "00", "0."]=>"t",
+                 ["0.", "..", "00"]=>"u",
+                 ["0.", "0.", "00"]=>"v",
+                 [".0", "00", ".0"]=>"w",
+                 ["00", "..", "00"]=>"x",
+                 ["00", ".0", "00"]=>"y",
+                 ["0.", ".0", "00"]=>"z",
+                 ["..", "0.", ".."]=>",",
+                 ["..", "0.", "0."]=>";",
+                 ["..", "00", ".."]=>":",
+                 ["..", "00", ".0"]=>".",
+                 ["..", "00", "0."]=>"!",
+                 ["..", "0.", "00"]=>"?",
+                 [".. ..", ".0 .0", "0. 0."]=>"*",
+                 ["..", "..", "0."]=>"'",
+                 ["..", "..", "00"]=>"-",
+                 ["..", "..", ".."]=>" "}
   end
 
   def braille_array(string) #turns a string into an array of unformated braille arrays
@@ -91,12 +127,72 @@ class Dictionary
     until x > (c - 1)
       formatted_braille.each do |array|
         braille += array[x] + "\n"
-        binding.pry
       end
       x += 1
     end
     braille
   end
 
+#methods below this line are for converting braille to english
+
+  def unstack_braille(string)
+    array_of_braille = []
+    first_row = []
+    second_row = []
+    third_row = []
+    # array = []
+    string = string.delete!("\n")
+    # c = 0 #control variable
+    # (array.length / (array.length / 6)).times do
+    #
+    binding.pry
+    #   if c == 0
+    #     first_row += array.shift(2)
+    #     c += 1
+    #   elsif c == 1
+    #     second_row += array.shift(2)
+    #     c+=1
+    #   elsif c == 2
+    #     third_row += array.shift(2)
+    #     c = 0
+    #   end
+    # end
+
+
+
+
+    array_of_braille = string.chars
+    binding.pry
+    return array_of_braille
+  end
+
+  def convert_to_braille_dict_format(array)
+    dict_array = [] #return array
+    letter_array = [] #array of 3 elements of braille that correspond to the braille dictionary
+    b = 0 #control variable
+    (array.length / 6).times do
+      until b > 2
+        letter_array[b] = array.shift(2).join
+        b += 1
+      end
+      dict_array << letter_array
+      b = 0
+    end
+    return dict_array
+  end
+
+  def english_output(string)
+    array = unstack_braille(string)
+    braille_2d = convert_to_braille_dict_format(array)
+    english_text = ""
+    braille_2d.each do |array|
+      @braille.each do |k, v|
+        if array == k
+          english_text += v
+        end
+      end
+    end
+    english_text
+  end
 
 end
