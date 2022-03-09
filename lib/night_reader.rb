@@ -16,4 +16,4 @@ original_txt.write(dictionary.english_output(incoming_braille))
 original_txt.close
 
 
-puts "Created #{ARGV[1]} containing #{incoming_braille.delete("\n").length} characters."
+puts "Created #{ARGV[1]} containing #{incoming_braille.delete("\n").length / 6} characters."

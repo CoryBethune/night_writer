@@ -127,7 +127,6 @@ class Dictionary
     until x > (c - 1)
       formatted_braille.each do |array|
         braille += array[x] + "\n"
-        binding.pry
       end
       x += 1
     end
@@ -138,14 +137,38 @@ class Dictionary
 
   def unstack_braille(string)
     array_of_braille = []
-    string.delete!("\n")
+    first_row = []
+    second_row = []
+    third_row = []
+    # array = []
+    string = string.delete!("\n")
+    # c = 0 #control variable
+    # (array.length / (array.length / 6)).times do
+    #
+    binding.pry
+    #   if c == 0
+    #     first_row += array.shift(2)
+    #     c += 1
+    #   elsif c == 1
+    #     second_row += array.shift(2)
+    #     c+=1
+    #   elsif c == 2
+    #     third_row += array.shift(2)
+    #     c = 0
+    #   end
+    # end
+
+
+
+
     array_of_braille = string.chars
+    binding.pry
     return array_of_braille
   end
 
   def convert_to_braille_dict_format(array)
     dict_array = [] #return array
-    letter_array = [] #array of 3 elements of braille that correspond to the braill dictionary
+    letter_array = [] #array of 3 elements of braille that correspond to the braille dictionary
     b = 0 #control variable
     (array.length / 6).times do
       until b > 2
